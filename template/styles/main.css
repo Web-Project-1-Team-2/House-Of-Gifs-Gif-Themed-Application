@@ -47,6 +47,13 @@ nav a {
   margin: 0 10px;
 }
 
+.userBox {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  margin-left: 20px;
+}
+
 nav a:hover {
   color: rgb(198, 115, 247);
 }
@@ -54,7 +61,7 @@ nav a:hover {
 #container {
   grid-area: container;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  padding: 10px;
   color: white;
 }
 
