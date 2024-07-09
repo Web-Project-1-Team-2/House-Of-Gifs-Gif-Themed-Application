@@ -57,7 +57,7 @@ nav a:hover {
   width: 80%;
   background-color: rgba(0, 0, 0, 0.76);
   margin: 0 auto;
-  height: 100vh;
+  min-height: 90vh;
 }
 
 .footer {
@@ -72,7 +72,7 @@ nav a:hover {
 
 .footer > h2 {
   font-size: 50px;
-  color: aqua;
+  color: rgb(95, 191, 255);
 }
 
 a.active {
