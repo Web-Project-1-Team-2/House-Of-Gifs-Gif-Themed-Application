@@ -7,27 +7,34 @@
   <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
-  <div id="app">
-    <header>
-      <nav>
-        <a href="#" class="nav-link" data-page="home">Trends</a> | 
-        <a href="#" class="nav-link" data-page="categories">Favorites</a> |
-        <a href="#" class="nav-link" data-page="favorites">Upload</a>
-        <a href="#" class="nav-link" data-page="about">About</a>
-        <input id="search" type="text" placeholder="Search">
-        <div class="userBox"></div>
-      </nav>
+  <header>
+    <nav class="nav one">
+      <a href="#" class="nav-link" data-page="trends">Trends</a>
+      <a href="#" class="nav-link" data-page="favorites">Favorites</a>
+      <a href="#" class="nav-link" data-page="upload">Upload</a>
+      <a href="#" class="nav-link" data-page="about">About</a>
+      <input id="search" type="text" placeholder="Search Giphs...">
+    </nav>
 
-    </header>
-   
-    
+    <nav class="nav two">
+      <a href="#" class="nav-link" data-page="profile">Profile</a>
+      <div class="user-box"></div>
+    </nav>
+  </header>
+
+
     <div id="container">
       <!-- start placeholders -->
       
       <!-- end placeholders -->
     </div>
-    <footer>Footer</footer>
-  </div>
+
+
+    <footer>
+      <div class="footer">
+        <h2>Web Project 1 - Team 2</h2>
+      </div>
+    </footer>
 
   <!-- app -->
   <script src="./src/index.js" type="module"></script>
