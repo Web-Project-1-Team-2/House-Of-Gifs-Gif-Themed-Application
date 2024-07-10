@@ -16,6 +16,6 @@ export const loadSingleMovie = (id) => {
   // missing implementation
 };
 
-export const loadSearchMovies = (searchTerm = '') => {
-  // missing implementation
+export const loadSearchGifs = async (searchTerm = '') => {
+  return fetch(`https://api.giphy.com/v1/gifs/search?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH&q=${searchTerm}&limit=30&rating=g`).then(data => data.json());
 };
