@@ -6,7 +6,7 @@ html, body {
 
 body {
   font-family: 'Bebas Neue', sans-serif;
-  background-color: rgb(150, 150, 150);
+  background-color: #202020;
 }
 
 header {
@@ -55,7 +55,7 @@ nav a:hover {
   display: flex;
   justify-content: center;
   width: 80%;
-  background-color: rgba(0, 0, 0, 0.76);
+  background-color: #202020;
   margin: 0 auto;
   min-height: 90vh;
 }
@@ -90,4 +90,20 @@ input#search {
   margin-left: 15px;
   height: 22px;
   flex-grow: 1;
+}
+
+/* Trending Styling */
+
+#trending {
+  display: inline-block;
+  columns: 4;
+  column-gap: 10px;
+}
+
+#trending img {
+  width: 100%;
+}
+
+#trending div {
+  margin-bottom: 10px;
 }

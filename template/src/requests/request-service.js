@@ -1,7 +1,5 @@
-import { getCategories, getMoviesGeneralInfo, getMovieById, getCategory, searchMovies } from '../data/movies.js';
-
-export const loadCategories = () => {
-  // missing implementation
+export const loadTrending = async () => {
+  return fetch(`https://api.giphy.com/v1/gifs/trending?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH&limit=35&rating=g`).then(data => data.json());
 };
 
 export const loadCategory = (id = null) => {

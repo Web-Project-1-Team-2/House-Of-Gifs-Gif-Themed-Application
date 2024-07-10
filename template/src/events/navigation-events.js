@@ -1,17 +1,17 @@
-import { CONTAINER_SELECTOR, HOME } from '../common/constants.js';
-import { toHomeView } from '../views/home-view.js';
+import { CONTAINER_SELECTOR, TRENDS } from '../common/constants.js';
 import { toMoviesFromCategoryView, toSingleMovieView } from '../views/movie-views.js';
 import { q, setActiveNav } from './helpers.js';
-import { movies } from '../data/movies-data.js';
+import { loadTrending } from '../requests/request-service.js';
+import { toTrendingView } from '../views/trending-view.js';
 
 // public API
 export const loadPage = (page = '') => {
 
   switch (page) {
 
-    case HOME:
-      setActiveNav(HOME);
-      return renderHome();
+    case TRENDS:
+      setActiveNav(TRENDS);
+      return renderTrending();
 
       // missing partial implementation
 
@@ -34,8 +34,10 @@ export const renderCategory = (categoryId = null) => {
 
 // private functions
 
-const renderHome = () => {
-  q(CONTAINER_SELECTOR).innerHTML = toHomeView();
+export const renderTrending = async () => {
+  const gifs = await loadTrending();
+
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
 };
 
 const renderCategories = () => {

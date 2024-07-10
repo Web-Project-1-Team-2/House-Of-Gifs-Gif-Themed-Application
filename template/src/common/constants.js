@@ -1,4 +1,4 @@
-export const HOME = 'home';
+export const TRENDS = 'trends';
 
 export const CATEGORIES = 'categories';
 
