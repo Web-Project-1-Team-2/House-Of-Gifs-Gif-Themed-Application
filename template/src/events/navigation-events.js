@@ -1,7 +1,7 @@
 import { CONTAINER_SELECTOR, TRENDS } from '../common/constants.js';
-import { toMoviesFromCategoryView, toSingleMovieView } from '../views/movie-views.js';
+import { toDetailedView} from '../views/detailed-view.js';
 import { q, setActiveNav } from './helpers.js';
-import { loadTrending } from '../requests/request-service.js';
+import { loadDetailedGif, loadTrending } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
 
 // public API
@@ -26,10 +26,10 @@ export const renderMovieDetails = (id = null) => {
   q(CONTAINER_SELECTOR).innerHTML = toSingleMovieView(movie);
 };
 
-export const renderCategory = (categoryId = null) => {
-  // missing partial implementation
+export const renderDetailedView = async (gifId = null) => {
+  const gif = await loadDetailedGif(gifId);
 
-  q(CONTAINER_SELECTOR).innerHTML = toMoviesFromCategoryView(category, movies);
+  q(CONTAINER_SELECTOR).innerHTML = toDetailedView(gif);
 };
 
 // private functions

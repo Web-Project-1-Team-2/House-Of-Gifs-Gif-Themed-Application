@@ -1,4 +1,4 @@
-import { toMovieSimple } from './movie-views.js';
+import { toMovieSimple } from './detailed-view.js';
 
 export const toFavoritesView = (movies) => `
 <div id="movies">

@@ -1,3 +1,5 @@
+export const LIMIT = 35;
+
 export const TRENDS = 'trends';
 
 export const CATEGORIES = 'categories';
