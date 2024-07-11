@@ -159,32 +159,56 @@ a.active {
 
 #detailed {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
   color: white;
+  padding: 40px;
+  background-color: black;
 }
 
 .detailed-info {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 15px;
+  border-left: 3px solid white;
 }
 
-.detailed-info > h1,h3,p{
-  margin: 0 20px 0 0;
-  font-size: 2rem;
+.gif-info{
+  margin: 0 0 0 20px;
+  align-self: flex-start;
+  justify-self: flex-end;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
+
+.gif-info > h1, p {
+  font-size: 2.5rem;
+  margin: 10px 0 5px 0
+}
+
 
 .user-avatar {
-  margin: 20px 20px;
+  text-align: center;
+  margin: 20px 20px 0 0;
+}
+
+.user-avatar > h3{
+  font-size: 2rem;
+  margin: 0;
+}
+
+.detailed-gif {
+display: inline-flex;
 }
 
 #detailed .detailed-gif img{
   max-width: 100%;
-  max-height: 100%;
+  max-height: auto;
   width: 450px;
   height: auto;
 }
@@ -192,7 +216,7 @@ a.active {
 .user-avatar img {
   max-width: 100%;
   max-height: 100%;
-  width: 200px;
+  width: 150px;
   height: auto;
 }
 

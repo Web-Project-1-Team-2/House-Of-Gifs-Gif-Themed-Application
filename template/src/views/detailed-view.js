@@ -6,10 +6,12 @@ export const toDetailedView = (gif) => `
     <div class="detailed-info">
         <div class="user-avatar">
             <img src="${gif.data.user.avatar_url}">
+            <h3>${gif.data.username}</h3>
         </div>
-        <h1>${gif.data.title}</h1>
-        <h3>${gif.data.username}</h3>
-        <p>Upload Date: ${gif.data.import_datetime}</p>
+        <div class="gif-info">
+            <h1>${gif.data.title}</h1>
+            <p>Upload Date: ${gif.data.import_datetime}</p>
+        </div>
     </div>
     
 </div>
