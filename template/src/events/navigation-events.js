@@ -1,10 +1,12 @@
-import { CONTAINER_SELECTOR, TRENDS, ABOUT, UPLOAD } from '../common/constants.js';
+import { CONTAINER_SELECTOR, TRENDS, ABOUT, UPLOAD, PROFILE } from '../common/constants.js';
 import { toDetailedView} from '../views/detailed-view.js';
 import { q, setActiveNav } from './helpers.js';
-import { loadDetailedGif, loadTrending } from '../requests/request-service.js';
+import { loadDetailedGif, loadGifsByID, loadTrending } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
 import { toAboutView } from '../views/about-view.js';
 import { toUploadView } from '../views/upload-view.js';
+import { toProfileView } from '../views/profile-view.js';
+import { getUploaded } from '../data/uploaded.js';
 
 
 export const loadPage = (page = '') => {
@@ -19,17 +21,22 @@ export const loadPage = (page = '') => {
       return renderUpload();
     case ABOUT:
       setActiveNav(ABOUT);
-      return renderAbout();    
+      return renderAbout();
+    case PROFILE:
+      setActiveNav(PROFILE);
+      return renderProfile() ;   
 
-      
     default: return null;
   }
 
 };
 
-export const renderMovieDetails = (id = null) => {
-  const movie = movies.find(movie=> movie.id===id);
-  q(CONTAINER_SELECTOR).innerHTML = toSingleMovieView(movie);
+export const renderProfile = async () => {
+  const uploadedGifs = getUploaded();
+  const gifs = uploadedGifs.map(id => loadGifsByID(id));
+  const readyGifs = await Promise.all(gifs);
+
+  q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs);
 };
 
 export const renderDetailedView = async (gifId = null) => {
@@ -37,8 +44,6 @@ export const renderDetailedView = async (gifId = null) => {
 
   q(CONTAINER_SELECTOR).innerHTML = toDetailedView(gif);
 };
-
-// private functions
 
 export const renderTrending = async () => {
   const gifs = await loadTrending();

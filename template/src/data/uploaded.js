@@ -14,4 +14,4 @@ export const removeUploaded = (gifId) => {
   localStorage.setItem('uploaded', JSON.stringify(uploaded));
 };
 
-export const getuploaded = () => [...uploaded];
+export const getUploaded = () => [...uploaded];

@@ -1,40 +1,43 @@
-import { LIMIT } from "../common/constants.js";
+import { Constants } from "../common/constants.js";
+import { addUploaded } from "../data/uploaded.js";
 
+const constants = new Constants()
 
 export const loadTrending = async () => {
-  return fetch(`https://api.giphy.com/v1/gifs/trending?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH&limit=${LIMIT}&rating=g`).then(data => data.json());
+  return fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${constants.API_KEY}&limit=${constants.LIMIT}&rating=g`).then(data => data.json());
 };
 
-export const loadCategory = (id = null) => {
-  const category = getCategory(id);
-
-  return category;
-}
-
-export const loadMovies = (categoryId = null) => {
-  // missing implementation
+export const loadGifsByID = async (id) => {
+  return fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`).then(data => data.json())
 };
 
-export const loadDetailedGif = async(id) => {
-  return fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH`).then(data => data.json())
+export const loadDetailedGif = async (id) => {
+  return fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`).then(data => data.json())
 };
 
 export const loadSearchGifs = async (searchTerm = '') => {
-  return fetch(`https://api.giphy.com/v1/gifs/search?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH&q=${searchTerm}&limit=${LIMIT}&rating=g`).then(data => data.json());
+  return fetch(`https://api.giphy.com/v1/gifs/search?api_key=${constants.API_KEY}&q=${searchTerm}&limit=${constants.LIMIT}&rating=g`).then(data => data.json());
 };
 
-export const uploadFile = (input) => {
+export const uploadFile = async (input) => {
 
   const formData = new FormData();
-  console.log(input.files);
   formData.append("file", input.files[0]);
 
-  const endpoint = 'https://upload.giphy.com/v1/gifs?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH'
+  const endpoint = `https://upload.giphy.com/v1/gifs?api_key=${constants.API_KEY}`;
 
-  fetch(endpoint, {
-    method: 'POST',
-    body: formData
-  })
-  // .then(data => data.json())
-  .catch(e => console.log(e.message));
+  try {
+    const uploadedGif = await fetch(endpoint, {
+      method: 'POST',
+      body: formData
+    })
+  
+    const usableGif = await uploadedGif.json();
+    const uploadedGifId = usableGif.data.id;
+    console.log(uploadedGifId);
+    addUploaded(uploadedGifId);
+  } catch (error) {
+    console.log(error.message);
+  }
+  
 }
