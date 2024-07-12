@@ -1,7 +1,7 @@
 import { TRENDS } from './common/constants.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { q} from './events/helpers.js';
-import { loadPage, renderDetailedView, renderMovieDetails } from './events/navigation-events.js';
+import { loadPage, renderDetailedView} from './events/navigation-events.js';
 import { renderSearchItems } from './events/search-events.js';
 import { uploadFile } from './requests/request-service.js';
 

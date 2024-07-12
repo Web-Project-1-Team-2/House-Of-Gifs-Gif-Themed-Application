@@ -34,6 +34,7 @@ export const uploadFile = (input) => {
   fetch(endpoint, {
     method: 'POST',
     body: formData
-  }).then(data => data.json())
+  })
+  // .then(data => data.json())
   .catch(e => console.log(e.message));
 }

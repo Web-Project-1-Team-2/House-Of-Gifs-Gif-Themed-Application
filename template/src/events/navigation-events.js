@@ -4,7 +4,7 @@ import { q, setActiveNav } from './helpers.js';
 import { loadDetailedGif, loadTrending } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
 import { toAboutView } from '../views/about-view.js';
-import { toUploadView } from '../views/upload-view.js/index.js';
+import { toUploadView } from '../views/upload-view.js';
 
 
 export const loadPage = (page = '') => {
