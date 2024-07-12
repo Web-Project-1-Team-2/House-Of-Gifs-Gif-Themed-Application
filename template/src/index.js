@@ -6,7 +6,7 @@ import { renderSearchItems } from './events/search-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // add global listener
+  // global listener
   document.addEventListener('click', event => {
 
     // nav events
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loadPage(event.target.getAttribute('data-page'));
     }
 
-    // show category events
+    // show Detailed View
     if (event.target.classList.contains('gif')) {
       console.log(event.target.getAttribute('data-gif-id'));
       renderDetailedView(event.target.getAttribute('data-gif-id'));

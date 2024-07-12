@@ -3,8 +3,9 @@ import { toDetailedView} from '../views/detailed-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { loadDetailedGif, loadTrending } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
+import { toAboutView } from '../views/about-view.js';
 
-// public API
+
 export const loadPage = (page = '') => {
 
   switch (page) {
@@ -12,10 +13,15 @@ export const loadPage = (page = '') => {
     case TRENDS:
       setActiveNav(TRENDS);
       return renderTrending();
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return renderUpload();
+    case ABOUT:
+      setActiveNav(ABOUT);
+      return renderAbout();
+    
 
-      // missing partial implementation
-
-    /* if the app supports error logging, use default to log mapping errors */
+      
     default: return null;
   }
 
@@ -49,5 +55,5 @@ const renderFavorites = () => {
 };
 
 const renderAbout = () => {
-  // missing implementation
+  q(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };
