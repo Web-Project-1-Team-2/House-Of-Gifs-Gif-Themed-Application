@@ -10,23 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // global listener
   document.addEventListener('click', event => {
 
-    // nav events
     if (event.target.classList.contains('nav-link')) {
 
       loadPage(event.target.getAttribute('data-page'));
     }
 
-    // show Detailed View
     if (event.target.classList.contains('gif')) {
       renderDetailedView(event.target.getAttribute('data-gif-id'));
     }
 
-    // show movie events
     if (event.target.classList.contains('nav-link')) {
       loadPage(event.target.getAttribute('data-page'));
     }
 
-    // toggle favorite event
     if (event.target.classList.contains("nav-link")) {
       loadPage(event.target.getAttribute('data-page'));
     }
