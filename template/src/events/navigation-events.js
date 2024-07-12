@@ -1,4 +1,4 @@
-import { CONTAINER_SELECTOR, TRENDS } from '../common/constants.js';
+import { CONTAINER_SELECTOR, TRENDS, ABOUT } from '../common/constants.js';
 import { toDetailedView} from '../views/detailed-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { loadDetailedGif, loadTrending } from '../requests/request-service.js';
@@ -13,9 +13,9 @@ export const loadPage = (page = '') => {
     case TRENDS:
       setActiveNav(TRENDS);
       return renderTrending();
-    case UPLOAD:
-      setActiveNav(UPLOAD);
-      return renderUpload();
+    // case UPLOAD:
+    //   setActiveNav(UPLOAD);
+    //   return renderUpload();
     case ABOUT:
       setActiveNav(ABOUT);
       return renderAbout();

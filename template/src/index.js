@@ -17,14 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // show Detailed View
     if (event.target.classList.contains('gif')) {
-      console.log(event.target.getAttribute('data-gif-id'));
       renderDetailedView(event.target.getAttribute('data-gif-id'));
     }
 
-    // // show movie events
-    // if (event.target.classList.contains(/* your button class here */)) {
-    //   renderMovieDetails(+event.target.getAttribute(/* your correct data attribute here */));
-    // }
+    // show movie events
+    if (event.target.classList.contains('nav-link')) {
+      loadPage(event.target.getAttribute('data-page'));
+    }
 
     // // toggle favorite event
     // if (event.target.classList.contains(/* favorites item class here */)) {
