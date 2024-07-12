@@ -55,11 +55,17 @@ nav a {
 }
 
 .user-box {
-  border-radius: 5px;
+  border-radius: 8px;
   width: 60px;
   height: 60px;
   background-color: white;
   margin-left: 20px;
+}
+
+.user-box img{
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
 }
 
 nav a:hover {
@@ -182,6 +188,7 @@ a.active {
   color: white;
   padding: 40px;
   background-color: black;
+  border-radius: 8px;
 }
 
 .detailed-info {
