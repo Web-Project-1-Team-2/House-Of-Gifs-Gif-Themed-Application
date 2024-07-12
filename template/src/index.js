@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
       loadPage(event.target.getAttribute('data-page'));
     }
 
-    // // toggle favorite event
-    // if (event.target.classList.contains(/* favorites item class here */)) {
-    //   toggleFavoriteStatus(+event.target.getAttribute(/* your correct data attribute here */));
-    // }
+    // toggle favorite event
+    if (event.target.classList.contains("nav-link")) {
+      loadPage(event.target.getAttribute('data-page'));
+    }
 
   });
 

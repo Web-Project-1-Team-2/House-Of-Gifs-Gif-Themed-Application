@@ -1,9 +1,10 @@
-import { CONTAINER_SELECTOR, TRENDS, ABOUT } from '../common/constants.js';
+import { CONTAINER_SELECTOR, TRENDS, ABOUT, UPLOAD } from '../common/constants.js';
 import { toDetailedView} from '../views/detailed-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { loadDetailedGif, loadTrending } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
 import { toAboutView } from '../views/about-view.js';
+import { toUploadView } from '../views/upload.js';
 
 
 export const loadPage = (page = '') => {
@@ -13,9 +14,9 @@ export const loadPage = (page = '') => {
     case TRENDS:
       setActiveNav(TRENDS);
       return renderTrending();
-    // case UPLOAD:
-    //   setActiveNav(UPLOAD);
-    //   return renderUpload();
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return renderUpload();
     case ABOUT:
       setActiveNav(ABOUT);
       return renderAbout();
@@ -46,8 +47,8 @@ export const renderTrending = async () => {
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
 };
 
-const renderCategories = () => {
-  // missing implementation
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
 const renderFavorites = () => {
