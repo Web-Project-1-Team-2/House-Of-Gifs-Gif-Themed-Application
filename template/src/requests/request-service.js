@@ -22,3 +22,18 @@ export const loadDetailedGif = async(id) => {
 export const loadSearchGifs = async (searchTerm = '') => {
   return fetch(`https://api.giphy.com/v1/gifs/search?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH&q=${searchTerm}&limit=${LIMIT}&rating=g`).then(data => data.json());
 };
+
+export const uploadFile = (input) => {
+
+  const formData = new FormData();
+  console.log(input.files);
+  formData.append("file", input.files[0]);
+
+  const endpoint = 'https://upload.giphy.com/v1/gifs?api_key=BoeObnq1qxBVH2k3HvivXxIhQZA12RgH'
+
+  fetch(endpoint, {
+    method: 'POST',
+    body: formData
+  }).then(data => data.json())
+  .catch(e => console.log(e.message));
+}
