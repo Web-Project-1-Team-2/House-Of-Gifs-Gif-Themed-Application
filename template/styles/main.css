@@ -56,8 +56,8 @@ nav a {
 
 .user-box {
   border-radius: 8px;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   background-color: white;
   margin-left: 20px;
 }
@@ -351,11 +351,17 @@ input[type=file]::file-selector-button {
   gap: 20px
 }
 
-.about-user{
+.about-user {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   border-left: 3px solid white;
+}
+
+.about-user img{
+  width: 25%;
+  height: auto;
+  border-radius: 8px;
 }
 
 .user-data {
