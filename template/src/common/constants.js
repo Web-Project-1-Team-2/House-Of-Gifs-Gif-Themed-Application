@@ -1,6 +1,10 @@
 export class Constants {
     #LIMIT = 35;
-    #API_KEY = 'BoeObnq1qxBVH2k3HvivXxIhQZA12RgH'
+    #API_KEY = 'UsqNJhspAhQU1sNdZ4nUmmQbj0hfcDLU'
+
+    //1st API: BoeObnq1qxBVH2k3HvivXxIhQZA12RgH
+    //2nd API: iRc8ZKeJlIPBCr51asOvxBGMW1YTLAoD
+    //3nd API: UsqNJhspAhQU1sNdZ4nUmmQbj0hfcDLU
 
     get LIMIT (){
         return this.#LIMIT;

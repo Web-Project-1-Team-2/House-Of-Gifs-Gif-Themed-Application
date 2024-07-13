@@ -40,8 +40,12 @@ export const uploadFile = async (input) => {
     const uploadedGifId = usableGif.data.id;
     console.log(uploadedGifId);
     addUploaded(uploadedGifId);
+    if(usableGif.meta.status == '200'){
+      alert('File Successfully Uploaded');
+    }
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
+    alert(error.message);
   }
   
 }

@@ -183,7 +183,7 @@ a.active {
   width: 90%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.2fr 2fr;
   gap: 20px;
   color: white;
   padding: 40px;
@@ -213,11 +213,15 @@ a.active {
   margin: 10px 0 5px 0
 }
 
-
 .user-avatar {
   text-align: center;
   margin: 20px 20px 0 0;
   
+}
+
+#gif-image-detailed {
+  display: flex;
+  align-items: center;
 }
 
 .user-avatar > h3{
@@ -226,13 +230,15 @@ a.active {
 }
 
 .detailed-gif {
-display: inline-flex;
+  display: grid;
+  grid-template-columns: 2fr 0.1fr;
+  gap: 20px;
 }
 
 #detailed .detailed-gif img{
   max-width: 100%;
   max-height: auto;
-  width: 450px;
+  width: 500px;
   height: auto;
 }
 
@@ -245,16 +251,17 @@ display: inline-flex;
 }
 
 span.favorite {
-  font-size: 30px;
+  font-size: 35px;
   cursor: pointer;
 }
 
 span.favorite.active {
-  color: rgb(255, 0, 149);
+  color: #4b98cc;
+  font-size: 30px;
 }
 
 span.favorite:hover {
-  color:rgb(187, 135, 255)
+  color: #0099ff;
 }
 
 /* About Page styling */
@@ -349,12 +356,30 @@ input[type=file]::file-selector-button {
 
 #profile {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 0.8fr;
   gap: 20px;
   background-color: black;
   color: white;
   padding: 40px;
   border-radius: 8px;
+}
+
+#profile-fav-gif {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: 20px;
+}
+
+.profile-gif-display {
+  display: grid;
+  grid-template-rows: 0.3fr 3fr;
+  width: 50%;
+  height: auto;
+}
+
+.profile-gif-display h3 {
+  margin: 0 0 20px 0;
+  font-size: 2rem;
 }
 
 .user-info {
@@ -385,12 +410,12 @@ input[type=file]::file-selector-button {
 }
 
 .about-user h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0 0 10px 0;
 }
 
 .user-data h3 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 30px 0 10px 0;
 }
 
@@ -418,7 +443,7 @@ hr {
 
 .uploaded-gifs h2 {
   color: white;
-  size: 2rem;
+  size: 3rem;
 }
 
 .uploaded-gird p {
@@ -435,3 +460,6 @@ hr {
   margin-bottom: 10px;
 }
 
+.gif {
+  cursor: pointer;
+}
