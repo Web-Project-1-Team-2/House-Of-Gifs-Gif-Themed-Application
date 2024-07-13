@@ -19,6 +19,10 @@ export const loadSearchGifs = async (searchTerm = '') => {
   return fetch(`https://api.giphy.com/v1/gifs/search?api_key=${constants.API_KEY}&q=${searchTerm}&limit=${constants.LIMIT}&rating=g`).then(data => data.json());
 };
 
+export const loadRandom = async() => {
+  return fetch(`https://api.giphy.com/v1/gifs/random?api_key=${constants.API_KEY}`).then(data => data.json());
+}
+
 export const uploadFile = async (input) => {
 
   const formData = new FormData();
@@ -41,5 +45,3 @@ export const uploadFile = async (input) => {
   }
   
 }
-
-// VbnUQpnihPSIgIXuZv

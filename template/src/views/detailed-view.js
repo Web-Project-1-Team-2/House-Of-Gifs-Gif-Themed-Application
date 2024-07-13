@@ -5,7 +5,7 @@ export const toDetailedView = (gif) => `
     <div class="detailed-gif">
         <img id="gif-image" src="${gif.data.images.downsized_large.url}" data-gif-id="${gif.data.id}">
         <div>
-            ${renderFavoriteStatus()}
+            ${renderFavoriteStatus(gif.data.id)}
         </div>
     </div>
     <div class="detailed-info">

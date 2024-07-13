@@ -1,8 +1,12 @@
-export const toProfileView = (uploadedGifs) => `
+import { renderFavoriteStatus } from "../events/favorites-events.js";
+
+export const toProfileView = (uploadedGifs, favoriteGif) => `
 <div id="profile">
   <div class="user-info">
     <div>
-      This is the first part
+      Favorite Gif:
+      <img id="gif-image" class="gif" src="${favoriteGif.data.images.downsized_medium.url}" data-gif-id="${favoriteGif.data.id}">
+      ${renderFavoriteStatus(favoriteGif.data.id)}
     </div>
     
     <div class="about-user">

@@ -244,6 +244,18 @@ display: inline-flex;
   border-radius: 4px;
 }
 
+span.favorite {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+span.favorite.active {
+  color: rgb(255, 0, 149);
+}
+
+span.favorite:hover {
+  color:rgb(187, 135, 255)
+}
 
 /* About Page styling */
 

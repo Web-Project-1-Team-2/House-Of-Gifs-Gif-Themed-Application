@@ -1,18 +1,18 @@
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-export const addFavorite = (movieId) => {
-  if (favorites.length ===0) {
-    favorites.push(movieId);
+export const addFavorite = (gifID) => {
+  if (favorites.length === 0) {
+    favorites.push(gifID);
     localStorage.setItem('favorites', JSON.stringify(favorites));
   } else {
     favorites.pop();
-    favorites.push(movieId);
+    favorites.push(gifID);
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
 };
 
-export const removeFavorite = (movieId) => {
-  favorites = favorites.filter(id => id !== movieId);
+export const removeFavorite = (gifId) => {
+  favorites = favorites.filter(id => id !== gifId);
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 

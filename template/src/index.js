@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if(event.target.classList.contains('favorite')){
-    
     const gif =  q('#gif-image');
     const gifId = gif.getAttribute('data-gif-id'); 
       toggleFavoriteStatus(gifId);

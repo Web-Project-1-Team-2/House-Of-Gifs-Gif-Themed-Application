@@ -1,12 +1,13 @@
 import { CONTAINER_SELECTOR, TRENDS, ABOUT, UPLOAD, PROFILE } from '../common/constants.js';
 import { toDetailedView} from '../views/detailed-view.js';
 import { q, setActiveNav } from './helpers.js';
-import { loadDetailedGif, loadGifsByID, loadTrending } from '../requests/request-service.js';
+import { loadDetailedGif, loadGifsByID, loadRandom, loadTrending } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
 import { toAboutView } from '../views/about-view.js';
 import { toUploadView } from '../views/upload-view.js';
 import { toProfileView } from '../views/profile-view.js';
 import { getUploaded } from '../data/uploaded.js';
+import { getFavorites } from '../data/favorites.js';
 
 
 export const loadPage = (page = '') => {
@@ -36,7 +37,21 @@ export const renderProfile = async () => {
   const gifs = uploadedGifs.map(id => loadGifsByID(id));
   const readyGifs = await Promise.all(gifs);
 
-  q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs);
+  const favoriteArray = getFavorites();
+  let result;
+
+  if(favoriteArray.length === 0){
+    result = await loadRandom();
+  } else {
+    const resultArr = favoriteArray.map(id => loadGifsByID(id));
+    result = await Promise.all(resultArr);
+  }
+
+  if(result.length > 0){
+    result = result[0]
+  }
+
+  q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs, result);
 };
 
 export const renderDetailedView = async (gifId = null) => {
@@ -53,10 +68,6 @@ export const renderTrending = async () => {
 
 const renderUpload = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
-};
-
-const renderFavorites = () => {
-  // missing implementation
 };
 
 const renderAbout = () => {
