@@ -23,7 +23,7 @@ export const addUploaded = (gifId) => {
 };
 
 /**
- * Removes a GID ID from the uploaded list.
+ * Removes a GIF ID from the uploaded list.
  * @param {string} gifId - The ID of the GIF to remove from the uploaded list. 
  */
 export const removeUploaded = (gifId) => {
