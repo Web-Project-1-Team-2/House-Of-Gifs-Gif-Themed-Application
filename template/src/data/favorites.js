@@ -1,5 +1,5 @@
 /**
- * @file Manages favorite GIDs using localStorage.
+ * @file Manages favorite GIFs using localStorage.
  */
 
 /**
