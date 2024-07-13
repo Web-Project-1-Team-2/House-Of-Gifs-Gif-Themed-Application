@@ -3,7 +3,7 @@ import { renderFavoriteStatus } from "../events/favorites-events.js";
 export const toDetailedView = (gif) => `
 <div id="detailed">
     <div class="detailed-gif">
-        <img src="${gif.data.images.downsized_large.url}">
+        <img id="gif-image" src="${gif.data.images.downsized_large.url}" data-gif-id="${gif.data.id}">
         <div>
             ${renderFavoriteStatus()}
         </div>
