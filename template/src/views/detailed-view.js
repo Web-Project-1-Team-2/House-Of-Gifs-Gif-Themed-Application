@@ -1,7 +1,12 @@
+import { renderFavoriteStatus } from "../events/favorites-events.js";
+
 export const toDetailedView = (gif) => `
 <div id="detailed">
     <div class="detailed-gif">
         <img src="${gif.data.images.downsized_large.url}">
+        <div>
+            ${renderFavoriteStatus()}
+        </div>
     </div>
     <div class="detailed-info">
         <div class="user-avatar">

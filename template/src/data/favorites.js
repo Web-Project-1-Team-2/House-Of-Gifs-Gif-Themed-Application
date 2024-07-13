@@ -5,7 +5,7 @@ export const addFavorite = (movieId) => {
     // Movie has already been added to favorites
     return;
   }
-
+  
   favorites.push(movieId);
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
