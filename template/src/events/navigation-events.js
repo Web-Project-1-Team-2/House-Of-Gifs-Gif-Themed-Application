@@ -9,6 +9,11 @@ import { toProfileView } from '../views/profile-view.js';
 import { getUploaded } from '../data/uploaded.js';
 import { getFavorites } from '../data/favorites.js';
 
+/**
+ * Loads and renders a specific page based on the provided page identifier.
+ * @param {string} [page =''] = The page identifier to load. 
+ * @returns {void}
+ */
 
 export const loadPage = (page = '') => {
 
@@ -31,7 +36,10 @@ export const loadPage = (page = '') => {
   }
 
 };
-
+/**
+ * Renders the profile view, Including uploaded and favorite GIFs.
+ * @returns{Promise<vod>}
+ */
 export const renderProfile = async () => {
   const uploadedGifs = getUploaded();
   const gifs = uploadedGifs.map(id => loadGifsByID(id));
@@ -54,22 +62,37 @@ export const renderProfile = async () => {
   q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs, result);
 };
 
+/**
+ * Renders the detailed view of a GIF.
+ * @param {sring} [gifId=null] - The ID of the GIF to render.
+ * @returns {Promise<void>} 
+ */
 export const renderDetailedView = async (gifId = null) => {
   const gif = await loadDetailedGif(gifId);
 
   q(CONTAINER_SELECTOR).innerHTML = toDetailedView(gif);
 };
 
+/**
+ * Renders the trending GIFs view.
+ * @returns {Promise<void>}
+ */
 export const renderTrending = async () => {
   const gifs = await loadTrending();
 
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
 };
-
+/**
+ * Renders the upload view.
+ * @returns {void}
+ */
 const renderUpload = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
-
+/**
+ * Renders the about view
+ * @returns {void}
+ */
 const renderAbout = () => {
   q(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };
