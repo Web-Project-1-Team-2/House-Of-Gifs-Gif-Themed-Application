@@ -1,5 +1,9 @@
 import { renderFavoriteStatus } from "../events/favorites-events.js";
-
+/**
+ * Generates the Detailed view as an HTML string.
+ * @param {Object} gif - the GIF data to display. 
+ * @returns {string} The HTML string for the Detailed view.
+ */
 export const toDetailedView = (gif) => `
 <div id="detailed">
     <div class="detailed-gif">

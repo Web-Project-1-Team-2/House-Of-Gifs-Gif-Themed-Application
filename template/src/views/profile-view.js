@@ -1,4 +1,10 @@
 import { renderFavoriteStatus } from "../events/favorites-events.js";
+/**
+ * Generates the Profile view as an HTML string.
+ * @param {Object[]} uploadedGifs - The uploaded GIFs data.
+ * @param {Object} favoriteGif - The favorite GID data.
+ * @returns {string} The HTML string for the Profile view.
+ */
 
 export const toProfileView = (uploadedGifs, favoriteGif) => `
 <div id="profile">

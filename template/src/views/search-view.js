@@ -1,3 +1,9 @@
+/**
+ * Generates the Search view as an HTML string.
+ * @param {Object} gifs - The GIFs data returned from the search.
+ * @param {string} searchTerm - The search term used to find the GIFs.
+ * @returns {string} The HTML string or the search view.
+ */
 export const toSearchView = (gifs, searchTerm) => `
 <div class="search-heading"><h1>Gifs found for: ${searchTerm}</h1></div><br>
 ${gifs.data.length > 0 ? `
