@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Main entry point for the application. Handle global event listeners and initial page load.
+ */
 import { TRENDS } from './common/constants.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { q} from './events/helpers.js';
@@ -5,9 +8,17 @@ import { loadPage, renderDetailedView} from './events/navigation-events.js';
 import { renderSearchItems } from './events/search-events.js';
 import { uploadFile } from './requests/request-service.js';
 
+/**
+ * Initializes the application by adding event listeners and loading the initial page.
+ * @listens DOMContentLoaded
+ */
 document.addEventListener('DOMContentLoaded', () => {
 
-  // global listener
+  /**
+   * Global click event listener for handling navigation, GIF interactions, file uploads, and favorite toggles.
+   *  @param {Event} event - The event object.
+   */
+
   document.addEventListener('click', event => {
 
     if (event.target.classList.contains('nav-link')) {
@@ -44,7 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  // search events
+  /**
+   * Click event listener for the search button to render search items.
+   * @param {Event} event - The event object.
+   */
   q('#search-btn').addEventListener('click', event => {
     const input = q('#search-input');
     renderSearchItems(input.value);
@@ -54,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   
-
+  // Load the initial page with trending items.
   loadPage(TRENDS);
 
 });
