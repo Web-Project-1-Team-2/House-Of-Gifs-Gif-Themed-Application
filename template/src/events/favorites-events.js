@@ -2,6 +2,10 @@ import { EMPTY_HEART, FULL_HEART } from '../common/constants.js';
 import { addFavorite, getFavorites, removeFavorite } from '../data/favorites.js';
 import { q } from './helpers.js';
 
+/**
+ * Toggles the favorites status of a GIF.
+ * @param {string} id - The ID of the GIF to toggle. 
+ */
 export const toggleFavoriteStatus = (id) => {
   const favorites = getFavorites();
   const heartSpan = q(`span[detailed-gif-id="${id}"]`);
@@ -17,6 +21,11 @@ export const toggleFavoriteStatus = (id) => {
   }
 };
 
+/**
+ * Renders the favorite status of a GIF.
+ * @param {string} id  - The ID of the GIF to render.
+ * @returns {string} The HTML string representing the favorite status.
+ */
 export const renderFavoriteStatus = (id) => {
   const favorites = getFavorites();
 
