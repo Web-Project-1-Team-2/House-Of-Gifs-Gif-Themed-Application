@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: events/navigation-events.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: events/navigation-events.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { CONTAINER_SELECTOR, TRENDS, ABOUT, UPLOAD, PROFILE } from '../common/constants.js';
+import { toDetailedView } from '../views/detailed-view.js';
+import { q, setActiveNav } from './helpers.js';
+import { loadDetailedGif, loadGifsByID, loadRandom, loadTrending } from '../requests/request-service.js';
+import { toTrendingView } from '../views/trending-view.js';
+import { toAboutView } from '../views/about-view.js';
+import { toUploadView } from '../views/upload-view.js';
+import { toProfileView } from '../views/profile-view.js';
+import { getUploaded } from '../data/uploaded.js';
+import { getFavorites } from '../data/favorites.js';
+
+/**
+ * Loads and renders a specific page based on the provided page identifier.
+ * @param {string} [page =''] = The page identifier to load.
+ * @returns {void}
+ */
+
+export const loadPage = (page = '') => {
+
+  switch (page) {
+
+    case TRENDS:
+      setActiveNav(TRENDS);
+      return renderTrending();
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return renderUpload();
+    case ABOUT:
+      setActiveNav(ABOUT);
+      return renderAbout();
+    case PROFILE:
+      setActiveNav(PROFILE);
+      return renderProfile();
+
+    default: return null;
+  }
+
+};
+/**
+ * Renders the profile view, Including uploaded and favorite GIFs.
+ * @return{Promise&lt;vod>}
+ */
+export const renderProfile = async () => {
+  const uploadedGifs = getUploaded();
+  const gifs = uploadedGifs.map(id => loadGifsByID(id));
+  const readyGifs = await Promise.all(gifs);
+
+  const favoriteArray = getFavorites();
+  let result;
+
+  if (favoriteArray.length === 0) {
+    result = await loadRandom();
+  } else {
+    const resultArr = favoriteArray.map(id => loadGifsByID(id));
+    result = await Promise.all(resultArr);
+  }
+
+  if (result.length > 0) {
+    result = result[0];
+  }
+
+  q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs, result);
+};
+
+/**
+ * Renders the detailed view of a GIF.
+ * @param {sring} [gifId=null] - The ID of the GIF to render.
+ * @return {Promise&lt;void>}
+ */
+export const renderDetailedView = async (gifId = null) => {
+  const gif = await loadDetailedGif(gifId);
+
+  q(CONTAINER_SELECTOR).innerHTML = toDetailedView(gif);
+};
+
+/**
+ * Renders the trending GIFs view.
+ * @return {Promise&lt;void>}
+ */
+export const renderTrending = async () => {
+  const gifs = await loadTrending();
+
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
+};
+/**
+ * Renders the upload view.
+ * @return {void}
+ */
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
+};
+/**
+ * Renders the about view
+ * @return {void}
+ */
+const renderAbout = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toAboutView();
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Constants.html">Constants</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ABOUT">ABOUT</a></li><li><a href="global.html#CONTAINER_SELECTOR">CONTAINER_SELECTOR</a></li><li><a href="global.html#EMPTY_HEART">EMPTY_HEART</a></li><li><a href="global.html#FAVORITES">FAVORITES</a></li><li><a href="global.html#FULL_HEART">FULL_HEART</a></li><li><a href="global.html#PROFILE">PROFILE</a></li><li><a href="global.html#TRENDS">TRENDS</a></li><li><a href="global.html#UPLOAD">UPLOAD</a></li><li><a href="global.html#addFavorite">addFavorite</a></li><li><a href="global.html#addUploaded">addUploaded</a></li><li><a href="global.html#favorites">favorites</a></li><li><a href="global.html#getFavorites">getFavorites</a></li><li><a href="global.html#getUploaded">getUploaded</a></li><li><a href="global.html#loadDetailedGif">loadDetailedGif</a></li><li><a href="global.html#loadGifsByID">loadGifsByID</a></li><li><a href="global.html#loadPage">loadPage</a></li><li><a href="global.html#loadRandom">loadRandom</a></li><li><a href="global.html#loadSearchGifs">loadSearchGifs</a></li><li><a href="global.html#loadTrending">loadTrending</a></li><li><a href="global.html#q">q</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#removeFavorite">removeFavorite</a></li><li><a href="global.html#removeUploaded">removeUploaded</a></li><li><a href="global.html#renderAbout">renderAbout</a></li><li><a href="global.html#renderDetailedView">renderDetailedView</a></li><li><a href="global.html#renderFavoriteStatus">renderFavoriteStatus</a></li><li><a href="global.html#renderProfile">renderProfile</a></li><li><a href="global.html#renderSearchItems">renderSearchItems</a></li><li><a href="global.html#renderTrending">renderTrending</a></li><li><a href="global.html#renderUpload">renderUpload</a></li><li><a href="global.html#setActiveNav">setActiveNav</a></li><li><a href="global.html#toAboutView">toAboutView</a></li><li><a href="global.html#toDetailedView">toDetailedView</a></li><li><a href="global.html#toProfileView">toProfileView</a></li><li><a href="global.html#toSearchView">toSearchView</a></li><li><a href="global.html#toTrendingView">toTrendingView</a></li><li><a href="global.html#toUploadView">toUploadView</a></li><li><a href="global.html#toggleFavoriteStatus">toggleFavoriteStatus</a></li><li><a href="global.html#uploadFile">uploadFile</a></li><li><a href="global.html#uploaded">uploaded</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun Jul 14 2024 14:01:21 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

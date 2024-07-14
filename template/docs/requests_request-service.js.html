@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: requests/request-service.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: requests/request-service.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable eqeqeq */
+import { Constants } from '../common/constants.js';
+import { addUploaded } from '../data/uploaded.js';
+
+const constants = new Constants();
+
+/**
+ * Loads trending GIFs.
+ * @returns {Promise&lt;Object>} The Trending GIFs data.
+ */
+
+export const loadTrending = async () => {
+  return fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${constants.API_KEY}&amp;limit=${constants.LIMIT}&amp;rating=g`).then(data => data.json());
+};
+/**
+ * Loads a GIF by its ID
+ * @param {string} id - ID of the GIF to load.
+ * @return {Promise&lt;Object>} The GIF data.
+ */
+export const loadGifsByID = async (id) => {
+  return fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`).then(data => data.json());
+};
+/**
+ * Loads detailed information about a GIF.
+ * @param {string} id - The ID of the GIF to load details for.
+ * @return {Promise&lt;Object>} The detailed GIF data.
+ */
+export const loadDetailedGif = async (id) => {
+  return fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`).then(data => data.json());
+};
+/**
+ * Loads GIFs based on a search term
+ * @param {string} [searchTerm=''] - The term of the search for GIFs
+ * @return {Promise&lt;Object>} The search results data.
+ */
+export const loadSearchGifs = async (searchTerm = '') => {
+  return fetch(`https://api.giphy.com/v1/gifs/search?api_key=${constants.API_KEY}&amp;q=${searchTerm}&amp;limit=${constants.LIMIT}&amp;rating=g`).then(data => data.json());
+};
+/**
+ * Loads a random GIF.
+ * @return {Promise&lt;Object>} The random GIF data.
+ */
+export const loadRandom = async () => {
+  return fetch(`https://api.giphy.com/v1/gifs/random?api_key=${constants.API_KEY}`).then(data => data.json());
+};
+/**
+ * Uploads a file to Giphy.
+ * @param {HTMLInputElement} input - The file input element.
+ * @return{Promise&lt;void>}
+ */
+export const uploadFile = async (input) => {
+
+  const formData = new FormData();
+  formData.append('file', input.files[0]);
+
+  const endpoint = `https://upload.giphy.com/v1/gifs?api_key=${constants.API_KEY}`;
+
+  try {
+    const uploadedGif = await fetch(endpoint, {
+      method: 'POST',
+      body: formData,
+    });
+
+    const usableGif = await uploadedGif.json();
+    const uploadedGifId = usableGif.data.id;
+    console.log(uploadedGifId);
+    addUploaded(uploadedGifId);
+    if (usableGif.meta.status == '200') {
+      alert('File Successfully Uploaded');
+    }
+  } catch (error) {
+    console.log(error);
+    alert(error.message);
+  }
+
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Constants.html">Constants</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ABOUT">ABOUT</a></li><li><a href="global.html#CONTAINER_SELECTOR">CONTAINER_SELECTOR</a></li><li><a href="global.html#EMPTY_HEART">EMPTY_HEART</a></li><li><a href="global.html#FAVORITES">FAVORITES</a></li><li><a href="global.html#FULL_HEART">FULL_HEART</a></li><li><a href="global.html#PROFILE">PROFILE</a></li><li><a href="global.html#TRENDS">TRENDS</a></li><li><a href="global.html#UPLOAD">UPLOAD</a></li><li><a href="global.html#addFavorite">addFavorite</a></li><li><a href="global.html#addUploaded">addUploaded</a></li><li><a href="global.html#favorites">favorites</a></li><li><a href="global.html#getFavorites">getFavorites</a></li><li><a href="global.html#getUploaded">getUploaded</a></li><li><a href="global.html#loadDetailedGif">loadDetailedGif</a></li><li><a href="global.html#loadGifsByID">loadGifsByID</a></li><li><a href="global.html#loadPage">loadPage</a></li><li><a href="global.html#loadRandom">loadRandom</a></li><li><a href="global.html#loadSearchGifs">loadSearchGifs</a></li><li><a href="global.html#loadTrending">loadTrending</a></li><li><a href="global.html#q">q</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#removeFavorite">removeFavorite</a></li><li><a href="global.html#removeUploaded">removeUploaded</a></li><li><a href="global.html#renderAbout">renderAbout</a></li><li><a href="global.html#renderDetailedView">renderDetailedView</a></li><li><a href="global.html#renderFavoriteStatus">renderFavoriteStatus</a></li><li><a href="global.html#renderProfile">renderProfile</a></li><li><a href="global.html#renderSearchItems">renderSearchItems</a></li><li><a href="global.html#renderTrending">renderTrending</a></li><li><a href="global.html#renderUpload">renderUpload</a></li><li><a href="global.html#setActiveNav">setActiveNav</a></li><li><a href="global.html#toAboutView">toAboutView</a></li><li><a href="global.html#toDetailedView">toDetailedView</a></li><li><a href="global.html#toProfileView">toProfileView</a></li><li><a href="global.html#toSearchView">toSearchView</a></li><li><a href="global.html#toTrendingView">toTrendingView</a></li><li><a href="global.html#toUploadView">toUploadView</a></li><li><a href="global.html#toggleFavoriteStatus">toggleFavoriteStatus</a></li><li><a href="global.html#uploadFile">uploadFile</a></li><li><a href="global.html#uploaded">uploaded</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun Jul 14 2024 14:01:21 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

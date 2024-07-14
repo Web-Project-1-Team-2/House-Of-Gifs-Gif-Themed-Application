@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.html",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^8.9.0",
     "eslint-config-google": "^0.14.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.3"
   }
 }
