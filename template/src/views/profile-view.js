@@ -1,4 +1,5 @@
-import { renderFavoriteStatus } from "../events/favorites-events.js";
+/* eslint-disable max-len */
+import { renderFavoriteStatus } from '../events/favorites-events.js';
 /**
  * Generates the Profile view as an HTML string.
  * @param {Object[]} uploadedGifs - The uploaded GIFs data.
@@ -35,7 +36,7 @@ export const toProfileView = (uploadedGifs, favoriteGif) => `
     ${uploadedGifs
       .map((gif) =>
           `<div class="grid-item"><img class="gif" data-gif-id="${gif.data.id}" src="${gif.data.images.downsized_medium.url}"></div>`)
-      .join("\n") || `<p>Upload some gifs</p>`}
+      .join('\n') || `<p>Upload some gifs</p>`}
     </div>
   </div>
 </div>

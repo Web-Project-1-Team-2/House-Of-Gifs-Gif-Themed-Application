@@ -1,6 +1,6 @@
 /**
  * Generates  the upload view as an HTML string.
- * @returns {string} The HTML string for the Upload view.
+ * @return {string} The HTML string for the Upload view.
  */
 export const toUploadView = () => `
 <div id="uploaded">

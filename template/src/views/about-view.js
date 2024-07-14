@@ -1,6 +1,6 @@
 /**
  * Generates the About view as an HTML string.
- * @returns 
+ * @return {string} The About view HTML code.
  */
 export const toAboutView = () => `
 <div id="about">

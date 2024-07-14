@@ -3,25 +3,25 @@
  */
 export class Constants {
     #LIMIT = 35;
-    #API_KEY = 'UsqNJhspAhQU1sNdZ4nUmmQbj0hfcDLU'
+    #API_KEY = 'UsqNJhspAhQU1sNdZ4nUmmQbj0hfcDLU';
 
-    //1st API: BoeObnq1qxBVH2k3HvivXxIhQZA12RgH
-    //2nd API: iRc8ZKeJlIPBCr51asOvxBGMW1YTLAoD
-    //3nd API: UsqNJhspAhQU1sNdZ4nUmmQbj0hfcDLU
+    // 1st API: BoeObnq1qxBVH2k3HvivXxIhQZA12RgH
+    // 2nd API: iRc8ZKeJlIPBCr51asOvxBGMW1YTLAoD
+    // 3nd API: UsqNJhspAhQU1sNdZ4nUmmQbj0hfcDLU
 
     /**
      * Gets the limit constant.
-     * @returns{number} The limit constant.
+     * @return{number} The limit constant.
      */
-    get LIMIT (){
+    get LIMIT() {
         return this.#LIMIT;
     }
 
     /**
      * Gets the API key
-     * @returns {string} The API key.
+     * @return {string} The API key.
      */
-    get API_KEY (){
+    get API_KEY() {
         return this.#API_KEY;
     }
 }

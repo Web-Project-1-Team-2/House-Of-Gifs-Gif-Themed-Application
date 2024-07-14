@@ -10,8 +10,7 @@ let uploaded = JSON.parse(localStorage.getItem('uploaded')) || [];
 
 /**
  * Adds a GIF ID to the uploaded list if it does not already exist.
- * @param {string} gifId - The ID of the GIF to add to the uploaded list. 
- * @returns 
+ * @param {string} gifId - The ID of the GIF to add to the uploaded list.
  */
 export const addUploaded = (gifId) => {
   if (uploaded.find(id => id === gifId)) {
@@ -24,7 +23,7 @@ export const addUploaded = (gifId) => {
 
 /**
  * Removes a GIF ID from the uploaded list.
- * @param {string} gifId - The ID of the GIF to remove from the uploaded list. 
+ * @param {string} gifId - The ID of the GIF to remove from the uploaded list.
  */
 export const removeUploaded = (gifId) => {
   uploaded = uploaded.filter(id => id !== gifId);
@@ -32,6 +31,6 @@ export const removeUploaded = (gifId) => {
 };
 /**
  * Gets the list of uploaded GIF IDs.
- * @returns {string} list of uploaded GIF IDs.
+ * @return {string} list of uploaded GIF IDs.
  */
 export const getUploaded = () => [...uploaded];
