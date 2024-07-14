@@ -70,7 +70,7 @@ export const CONTAINER_SELECTOR = '#container';
 export const FULL_HEART = '❤';
 
 /**
- * Empty hear symbol.
+ * Empty heart symbol.
  * @constant {string}
  * @default
  */

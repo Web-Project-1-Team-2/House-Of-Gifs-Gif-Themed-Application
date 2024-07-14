@@ -97,12 +97,12 @@ nav a:hover {
   align-items: center;
   margin-top: 35px;
   background-color: black;
-  height: 150px;
+  height: 80px;
   color: white;
 }
 
 .footer > h2 {
-  font-size: 50px;
+  font-size: 25px;
   color: rgb(95, 191, 255);
 }
 
