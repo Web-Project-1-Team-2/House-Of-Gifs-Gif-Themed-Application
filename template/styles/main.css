@@ -97,7 +97,7 @@ nav a:hover {
   align-items: center;
   margin-top: 35px;
   background-color: black;
-  height: 80px;
+  height: 150px;
   color: white;
 }
 
@@ -129,7 +129,7 @@ a.active {
 #trending {
   display: inline-block;
   columns: 4;
-  column-gap: 10px;
+  column-gap: 15px;
 }
 
 #trending img {

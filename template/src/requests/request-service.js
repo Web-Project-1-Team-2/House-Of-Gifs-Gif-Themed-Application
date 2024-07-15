@@ -10,7 +10,9 @@ const constants = new Constants();
  */
 
 export const loadTrending = async () => {
-  return fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${constants.API_KEY}&limit=${constants.LIMIT}&rating=g`).then(data => data.json());
+  const responseTrending = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${constants.API_KEY}&limit=${constants.LIMIT}&rating=g`);
+  const dataTrending = responseTrending.json();
+  return dataTrending;
 };
 /**
  * Loads a GIF by its ID
@@ -18,7 +20,9 @@ export const loadTrending = async () => {
  * @return {Promise<Object>} The GIF data.
  */
 export const loadGifsByID = async (id) => {
-  return fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`).then(data => data.json());
+  const responseGifsById = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`);
+  const dataGifsById = responseGifsById.json();
+  return dataGifsById;
 };
 /**
  * Loads detailed information about a GIF.
@@ -26,7 +30,9 @@ export const loadGifsByID = async (id) => {
  * @return {Promise<Object>} The detailed GIF data.
  */
 export const loadDetailedGif = async (id) => {
-  return fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`).then(data => data.json());
+  const responseDetailedGif = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`);
+  const dataDetailedGif = responseDetailedGif.json();
+  return dataDetailedGif;
 };
 /**
  * Loads GIFs based on a search term
@@ -34,14 +40,18 @@ export const loadDetailedGif = async (id) => {
  * @return {Promise<Object>} The search results data.
  */
 export const loadSearchGifs = async (searchTerm = '') => {
-  return fetch(`https://api.giphy.com/v1/gifs/search?api_key=${constants.API_KEY}&q=${searchTerm}&limit=${constants.LIMIT}&rating=g`).then(data => data.json());
+  const responseSearchedGifs = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${constants.API_KEY}&q=${searchTerm}&limit=${constants.LIMIT}&rating=g`);
+  const dataSearchedGifs = responseSearchedGifs.json();
+  return dataSearchedGifs;
 };
 /**
  * Loads a random GIF.
  * @return {Promise<Object>} The random GIF data.
  */
 export const loadRandom = async () => {
-  return fetch(`https://api.giphy.com/v1/gifs/random?api_key=${constants.API_KEY}`).then(data => data.json());
+  const responseRandom = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${constants.API_KEY}`);
+  const dataRandom = responseRandom.json();
+  return dataRandom;
 };
 /**
  * Uploads a file to Giphy.
@@ -51,9 +61,9 @@ export const loadRandom = async () => {
 export const uploadFile = async (input) => {
 
   const formData = new FormData();
+  const endpoint = `https://upload.giphy.com/v1/gifs`;
+  formData.append('api_key', constants.API_KEY);
   formData.append('file', input.files[0]);
-
-  const endpoint = `https://upload.giphy.com/v1/gifs?api_key=${constants.API_KEY}`;
 
   try {
     const uploadedGif = await fetch(endpoint, {
@@ -62,10 +72,11 @@ export const uploadFile = async (input) => {
     });
 
     const usableGif = await uploadedGif.json();
+    console.log(usableGif);
     const uploadedGifId = usableGif.data.id;
     console.log(uploadedGifId);
     addUploaded(uploadedGifId);
-    if (usableGif.meta.status == '200') {
+    if (usableGif.meta.msg === 'OK') {
       alert('File Successfully Uploaded');
     }
   } catch (error) {

@@ -3,7 +3,7 @@
  */
 export class Constants {
     #LIMIT = 35;
-    #API_KEY = 'UsqNJhspAhQU1sNdZ4nUmmQbj0hfcDLU';
+    #API_KEY = 'BoeObnq1qxBVH2k3HvivXxIhQZA12RgH';
 
     // 1st API: BoeObnq1qxBVH2k3HvivXxIhQZA12RgH
     // 2nd API: iRc8ZKeJlIPBCr51asOvxBGMW1YTLAoD
