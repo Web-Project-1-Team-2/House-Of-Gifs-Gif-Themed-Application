@@ -11,7 +11,7 @@ const constants = new Constants();
 
 export const loadTrending = async () => {
   const responseTrending = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${constants.API_KEY}&limit=${constants.LIMIT}&rating=g`);
-  const dataTrending = responseTrending.json();
+  const dataTrending = await responseTrending.json();
   return dataTrending;
 };
 /**
@@ -21,7 +21,7 @@ export const loadTrending = async () => {
  */
 export const loadGifsByID = async (id) => {
   const responseGifsById = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`);
-  const dataGifsById = responseGifsById.json();
+  const dataGifsById = await responseGifsById.json();
   return dataGifsById;
 };
 /**
@@ -31,7 +31,7 @@ export const loadGifsByID = async (id) => {
  */
 export const loadDetailedGif = async (id) => {
   const responseDetailedGif = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${constants.API_KEY}`);
-  const dataDetailedGif = responseDetailedGif.json();
+  const dataDetailedGif = await responseDetailedGif.json();
   return dataDetailedGif;
 };
 /**
@@ -41,7 +41,7 @@ export const loadDetailedGif = async (id) => {
  */
 export const loadSearchGifs = async (searchTerm = '') => {
   const responseSearchedGifs = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${constants.API_KEY}&q=${searchTerm}&limit=${constants.LIMIT}&rating=g`);
-  const dataSearchedGifs = responseSearchedGifs.json();
+  const dataSearchedGifs = await responseSearchedGifs.json();
   return dataSearchedGifs;
 };
 /**
@@ -50,7 +50,7 @@ export const loadSearchGifs = async (searchTerm = '') => {
  */
 export const loadRandom = async () => {
   const responseRandom = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${constants.API_KEY}`);
-  const dataRandom = responseRandom.json();
+  const dataRandom = await responseRandom.json();
   return dataRandom;
 };
 /**
