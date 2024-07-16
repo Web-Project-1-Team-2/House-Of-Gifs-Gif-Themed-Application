@@ -8,6 +8,10 @@ import { CONTAINER_SELECTOR } from '../common/constants.js';
  * @return {Promise<void>}
  */
 export const renderSearchItems = async (searchTerm) => {
-  const searchedGifs = await loadSearchGifs(searchTerm);
-  q(CONTAINER_SELECTOR).innerHTML = toSearchView(searchedGifs, searchTerm);
+  try {
+    const searchedGifs = await loadSearchGifs(searchTerm);
+    q(CONTAINER_SELECTOR).innerHTML = toSearchView(searchedGifs, searchTerm);
+  } catch (error) {
+    alert(error.message);
+  }
 };

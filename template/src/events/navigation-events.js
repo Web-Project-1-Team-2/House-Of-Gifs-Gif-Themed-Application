@@ -41,27 +41,31 @@ export const loadPage = (page = '') => {
  * @return{Promise<vod>}
  */
 export const renderProfile = async () => {
-  const uploadedGifs = getUploaded();
-  const gifs = uploadedGifs.map(id => loadGifsByID(id));
-  const readyGifs = await Promise.all(gifs);
-  let isFavorite = false;
+  try {
+    const uploadedGifs = getUploaded();
+    const gifs = uploadedGifs.map(id => loadGifsByID(id));
+    const readyGifs = await Promise.all(gifs);
+    let isFavorite = false;
 
-  const favoriteArray = getFavorites();
-  let result;
+    const favoriteArray = getFavorites();
+    let result;
 
-  if (favoriteArray.length === 0) {
-    result = await loadRandom();
-  } else {
-    const resultArr = favoriteArray.map(id => loadGifsByID(id));
-    result = await Promise.all(resultArr);
-    isFavorite = true;
+    if (favoriteArray.length === 0) {
+      result = await loadRandom();
+    } else {
+      const resultArr = favoriteArray.map(id => loadGifsByID(id));
+      result = await Promise.all(resultArr);
+      isFavorite = true;
+    }
+
+    if (result.length > 0) {
+      result = result[0];
+    }
+
+    q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs, result, isFavorite);
+  } catch (error) {
+    alert(error);
   }
-
-  if (result.length > 0) {
-    result = result[0];
-  }
-
-  q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs, result, isFavorite);
 };
 
 /**
@@ -70,9 +74,12 @@ export const renderProfile = async () => {
  * @return {Promise<void>}
  */
 export const renderDetailedView = async (gifId = null) => {
-  const gif = await loadDetailedGif(gifId);
-
-  q(CONTAINER_SELECTOR).innerHTML = toDetailedView(gif);
+  try {
+    const gif = await loadDetailedGif(gifId);
+    q(CONTAINER_SELECTOR).innerHTML = toDetailedView(gif);
+  } catch (error) {
+    alert(error);
+  }
 };
 
 /**
@@ -80,9 +87,12 @@ export const renderDetailedView = async (gifId = null) => {
  * @return {Promise<void>}
  */
 export const renderTrending = async () => {
-  const gifs = await loadTrending();
-
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
+  try {
+    const gifs = await loadTrending();
+    q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
+  } catch (error) {
+    alert(error);
+  }
 };
 /**
  * Renders the upload view.
