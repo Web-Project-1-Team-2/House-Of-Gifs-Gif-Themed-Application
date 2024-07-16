@@ -26,7 +26,7 @@ nav {
 }
 
 nav a {
-  color: rgb(95, 191, 255);
+  color: #74b25e;
   text-decoration: none;
   margin: 0 10px;
 }
@@ -48,7 +48,7 @@ nav a {
   height: 27px;
   padding: 10px 10px 10px 10px;
   border: none;
-  background-color: #5fbfff;
+  background-color: #74b25e;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -69,11 +69,11 @@ nav a {
 }
 
 nav a:hover {
-  color: #4b98cc;
+  color: #ffbc51;
 }
 
 #search-btn:hover {
-  background-color: #4b98cc
+  background-color: #ffbc51
 }
 
 #search-btn:active {
@@ -103,11 +103,11 @@ nav a:hover {
 
 .footer > h2 {
   font-size: 25px;
-  color: rgb(95, 191, 255);
+  color: #74b25e;
 }
 
 a.active {
-  color: white;
+  color: #dbeed5;
   font-weight: bold;
 }
 
@@ -116,12 +116,17 @@ a.active {
   font-size: 18px;
   width: 200px;
   background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  border: 1px solid rgb(255, 255, 255);
+  color: #dbeed5;
+  border: 1.5px solid #74b25e;
   border-radius: 4px;
   margin-left: 10px;
   height: 22px;
   flex-grow: 1;
+}
+
+#search-input:focus {
+  border-color: #ffbc51;
+  outline: none;
 }
 
 /* Trending Styling */
@@ -185,7 +190,7 @@ a.active {
   display: grid;
   grid-template-columns: 1.2fr 2fr;
   gap: 20px;
-  color: white;
+  color: #dbeed5;
   padding: 40px;
   background-color: black;
   border-radius: 8px;
@@ -195,7 +200,7 @@ a.active {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  border-left: 3px solid white;
+  border-left: 3px solid #74b25e;
 }
 
 .gif-info{
@@ -253,15 +258,16 @@ a.active {
 span.favorite {
   font-size: 35px;
   cursor: pointer;
+  color: #ffbc51;
 }
 
 span.favorite.active {
-  color: #4b98cc;
+  color: #ffbc51;
   font-size: 30px;
 }
 
 span.favorite:hover {
-  color: #0099ff;
+  color: #74b25e;
 }
 
 /* About Page styling */
@@ -271,7 +277,7 @@ span.favorite:hover {
   height: 100%;
   background-color: black;
   padding: 100px 0;
-  color: white;
+  color: #74b25e;
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
@@ -293,7 +299,7 @@ span.favorite:hover {
 
 #uploaded {
   background-color: black;
-  color: white;
+  color: #dbeed5;
   width: 100%;
   height: 100% ;
   padding: 100px 0;
@@ -302,7 +308,7 @@ span.favorite:hover {
 }
 
 .form {
-  background-color: #5fbfff;
+  background-color: #74b25e;
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
@@ -310,8 +316,8 @@ span.favorite:hover {
 }
 
 .upload-button {
-  background-color: #ffffff;
-  color: #5fbfff;
+  background-color: #dbeed5;
+  color: #74b25e;
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -332,14 +338,14 @@ input[type=file] {
   margin: 10px 0;
   display: block;
   width: calc(100% - 20px);
-  border: 2px solid #ffffff;
+  border: 2px solid #dbeed5;
   font-size: 16px;
   border-radius: 8px;
 }
 
 input[type=file]::file-selector-button {
-  background-color: #ffffff;
-  color: #5fbfff;
+  background-color: #dbeed5;
+  color: #74b25e;
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -352,6 +358,10 @@ input[type=file]::file-selector-button {
   font-family: 'Bebas Neue', sans-serif;
 }
 
+input[type=file]::file-selector-button:hover{
+  background-color: #ececec;
+}
+
 /* Profile Styling */
 
 #profile {
@@ -359,7 +369,7 @@ input[type=file]::file-selector-button {
   grid-template-rows: 1fr 0.8fr;
   gap: 20px;
   background-color: black;
-  color: white;
+  color: #dbeed5;
   padding: 40px;
   border-radius: 8px;
 }
@@ -392,11 +402,11 @@ input[type=file]::file-selector-button {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  border-left: 3px solid white;
+  border-left: 3px solid #74b25e;
 }
 
 .about-user img{
-  width: 25%;
+  width: 20%;
   height: auto;
   border-radius: 8px;
 }
@@ -428,13 +438,14 @@ input[type=file]::file-selector-button {
   margin-top: 20px;
   display: block;
   columns: 4;
-  column-gap: 10px;
+  column-gap: 15px;
 }
 
 hr {
-  background-color: white;
+  background-color: #74b25e;
   color: white;
-  height: 1px;
+  height: 2.5px;
+  border: 0;
 }
 
 .uploaded-gifs {
@@ -442,12 +453,12 @@ hr {
 }
 
 .uploaded-gifs h2 {
-  color: white;
-  size: 3rem;
+  color: #dbeed5;
+  size: 4rem;
 }
 
 .uploaded-gird p {
-  color: white;
+  color: #dbeed5;
   font-size: 3.9rem;
   white-space: nowrap;      
 }

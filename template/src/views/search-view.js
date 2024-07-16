@@ -15,7 +15,7 @@ ${gifs.data.length > 0 ? `
             </div>`).join('\n')}
     </div>` : `
     <div id="search-empty">
-        <p>Search for something!</p>
+        <p>No results!</p>
     </div> `}
 `;
 

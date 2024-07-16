@@ -44,6 +44,7 @@ export const renderProfile = async () => {
   const uploadedGifs = getUploaded();
   const gifs = uploadedGifs.map(id => loadGifsByID(id));
   const readyGifs = await Promise.all(gifs);
+  let isFavorite = false;
 
   const favoriteArray = getFavorites();
   let result;
@@ -53,13 +54,14 @@ export const renderProfile = async () => {
   } else {
     const resultArr = favoriteArray.map(id => loadGifsByID(id));
     result = await Promise.all(resultArr);
+    isFavorite = true;
   }
 
   if (result.length > 0) {
     result = result[0];
   }
 
-  q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs, result);
+  q(CONTAINER_SELECTOR).innerHTML = toProfileView(readyGifs, result, isFavorite);
 };
 
 /**

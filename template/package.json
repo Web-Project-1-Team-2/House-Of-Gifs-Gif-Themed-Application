@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.html",
+    "start": "live-server",
     "lint": "eslint .",
     "docs": "jsdoc -c jsdoc.json"
   },
@@ -20,6 +20,7 @@
     "eslint-config-google": "^0.14.0"
   },
   "devDependencies": {
-    "jsdoc": "^4.0.3"
+    "jsdoc": "^4.0.3",
+    "live-server": "^1.2.2"
   }
 }
